@@ -194,7 +194,7 @@ kubectl rollout status deploy/php-apache --timeout=180s
 
 **3. Criar o HPA (cpu 50%, 1→10):**
 ```bash
-kubectl autoscale deployment php-apache --cpu=50% --min=1 --max=10
+kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=10
 kubectl get hpa
 kubectl top pods        # confirma que a métrica de CPU aparece (metrics-server ok)
 ```
@@ -420,7 +420,7 @@ para versionar. Por isso a disciplina evolui
 
 | Quero... | Vá em |
 | --- | --- |
-| Ver os scripts que substituem isso | `scripts/semana-04-ecr/build-push-ecr.sh`, `scripts/semana-05-hpa/teste-carga.py` |
+| Ver os scripts que substituem isso | `scripts/build-and-push-ecr.sh`, `scripts/load-test-simple.py` |
 | Fazer o HPA de verdade no app | [`14-hpa-carga-custos.md`](14-hpa-carga-custos.md) |
 | DynamoDB pela app | [`15-eventos-dynamodb.md`](15-eventos-dynamodb.md) |
 | Infra como código (próximo nível) | Semana 6 — CDK |
