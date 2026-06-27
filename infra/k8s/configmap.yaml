@@ -15,7 +15,7 @@ metadata:
   namespace: cloudtask
 data:
   APP_ENV: "production"
-  LOG_LEVEL: "INFO"
+  LOG_LEVEL: "DEBUG"
   APP_PORT: "8000"
 
   # Hostname do Postgres = nome do Service (DNS interno do K8s).
