@@ -3,7 +3,7 @@
 # -----------------------------------------------------------------------------
 # O QUE MUDA em relação ao api-deployment.yaml local (Kind):
 #   * image: vem do ECR (registry na nuvem), não mais `cloudtask-api:dev` local.
-#     TROQUE <ACCOUNT> pelo ID da sua conta AWS (12 dígitos). O script
+#     TROQUE 474746395287 pelo ID da sua conta AWS (12 dígitos). O script
 #     scripts/semana-04-ecr/build-push-ecr.sh imprime a linha exata no final.
 #   * imagePullPolicy: Always — sempre puxar a tag do ECR (a `latest` pode ter
 #     mudado). Em produção, prefira tag com SHA do commit + IfNotPresent.
@@ -53,8 +53,8 @@ spec:
                 secretKeyRef: { name: cloudtask-secrets, key: POSTGRES_USER }
       containers:
         - name: api
-          # ▼▼▼ TROQUE <ACCOUNT> e a região se necessário ▼▼▼
-          image: <ACCOUNT>.dkr.ecr.us-east-1.amazonaws.com/cloudtask-api:latest
+          # ▼▼▼ TROQUE 474746395287 e a região se necessário ▼▼▼
+          image: 474746395287.dkr.ecr.us-east-1.amazonaws.com/cloudtask-api:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
