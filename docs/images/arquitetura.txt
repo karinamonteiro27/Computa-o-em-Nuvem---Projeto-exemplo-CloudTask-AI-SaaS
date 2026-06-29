@@ -1,0 +1,27 @@
+Internet (HTTP / sslip.io)
+                           |
+                           v
+                 [ Instância EC2 / Node ]
+                           |
+         Tráfego direcionado para o cluster
+                           |
+                           v
+           +-----------------------------------+
+           |        Amazon EKS (cluster)       |
+           |                                   |
+           |   +----------+     HPA 2..5       |
+           |   | Pods API | <-- escala c/ CPU  |
+           |   +----+-----+                    |
+           |        |                          |
+           |        v                          |
+           |   +----+-----+                    |
+           |   | Pod Post | (Banco interno     |
+           |   | -greSQL  |  com PV/PVC)       |
+           |   +----------+                    |
+           +-----------------------------------+
+                |            |            |
+                v            v            v
+            Amazon S3    DynamoDB    ECR (imagem)
+            (uploads)   (eventos)   (origem do deploy)
+
+Infra descrita como código (CDK): S3, ECR, DynamoDB, VPC -> reprodutível e versionada.
